@@ -13,4 +13,12 @@ describe Reminder do
     reminder.remind_me_to("Do the laundry")
     expect(reminder.remind()).to eq "Do the laundry, Jason!"
   end
+
+  context "when no task is set" do
+    it "fails" do
+      reminder = Reminder.new("Kay")
+      expect { reminder.remind() }.to raise_error "No reminder set!"
+    end
+  end
+  
 end
